@@ -1,5 +1,3 @@
-//ggggg
-
 const inputbox = document.getElementById("input-box");
 const listcontainer = document.getElementById("list-container");
 
@@ -8,8 +6,19 @@ function addTask() {
     alert("Fill up the blank!");
   } else {
     let li = document.createElement("li");
-    li.innerHTML = inputbox.value;
     li.classList.add("list-item");
+
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.addEventListener("change", function () {
+      li.classList.toggle("checked", checkbox.checked);
+    });
+
+    li.appendChild(checkbox);
+
+    let taskText = document.createElement("span");
+    taskText.innerHTML = inputbox.value;
+    li.appendChild(taskText);
 
     let line = document.createElement("hr");
     line.classList.add("line");
@@ -51,14 +60,25 @@ function editTask(li) {
   saveButton.innerHTML = "Save";
   li.parentElement.insertBefore(saveButton, li);
 
+  // Clone the checkbox from the original li
+  let checkbox = li.querySelector('input[type="checkbox"]').cloneNode(true);
+
   saveButton.addEventListener("click", function () {
     let newLi = document.createElement("li");
-    newLi.innerHTML = editInput.value;
     newLi.classList.add("list-item");
+
+    // Append the cloned checkbox to the new li
+    newLi.appendChild(checkbox.cloneNode(true));
+
+    let taskText = document.createElement("span");
+    taskText.innerHTML = editInput.value;
+    newLi.appendChild(taskText);
 
     let line = document.createElement("hr");
     line.classList.add("line");
     newLi.appendChild(line);
+
+    listcontainer.appendChild(newLi);
 
     let span = document.createElement("span");
     span.innerHTML = "\u00d7";
@@ -83,11 +103,31 @@ function editTask(li) {
   });
 }
 
+function deleteAllTasks() {
+  listcontainer.innerHTML = "";
+}
+
+function deleteCheckedTasks() {
+  const checkedItems = document.querySelectorAll(".list-item.checked");
+  checkedItems.forEach(item => item.remove());
+}
+
 listcontainer.addEventListener(
   "click",
   function (e) {
-    if (e.target.tagName === "LI") {
-      e.target.classList.toggle("checked");
+    const li = e.target.closest("li");
+
+    if (li) {
+      const checkbox = li.querySelector('input[type="checkbox"]');
+
+      if (checkbox) {
+        if (e.target === checkbox) {
+          li.classList.toggle("checked", checkbox.checked);
+        } else {
+          checkbox.checked = !checkbox.checked;
+          li.classList.toggle("checked", checkbox.checked);
+        }
+      }
     }
   },
   false
