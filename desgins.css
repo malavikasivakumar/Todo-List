@@ -1,6 +1,7 @@
 *{
     margin: 0px;
     padding: 0%;
+        bottom: 42px;
 
 }
 .one{
@@ -42,6 +43,10 @@ input{
     border: inset;
 
 
+
+}
+ul li{
+    display: block;
 }
 .two button{
     height: 34px;
@@ -57,7 +62,7 @@ input{
 ul li{
     margin-left: 13px;
     margin-top: 33px;
-    font-size: 30px;
+    font-size: 23px;
     user-select: none;
     position: relative;
     cursor: pointer;
@@ -69,12 +74,11 @@ ul li{
 }
 ul li::before{
 
-    content: '';
+    
     position: absolute;
     border-radius: 40px;
     height: 28px;
     width: 24px;
-    background-image: url(unchecked.png);
     background-size: cover;
     background-position: center;
     top: 300px;
@@ -92,7 +96,7 @@ ul li.checked::before{
 ul li span{
     position: absolute;
     right: 0;
-    top: 5px;
+    top: 31px;
     width: 40px;
     height: 40px;
     font-size: 25px;
@@ -107,14 +111,13 @@ ul li span:hover{
 ul li button{
 
 
-    position: absolute;
-    right: 35px;
-    width: 38px;
-    height: 24px;
-    font-size: 16px;
-    color: white;
-    top: 13px;
-    border-radius: 10px;
+    width: 31px;
+    height: 22px;
+    font-size: 14px;
+    border-radius: 0px;
+    margin-top: -7px;
+    display: flex;
+    text-align: center;
 }
 
 
@@ -128,7 +131,7 @@ button{
     width: 36px;
 }
 ul#list-container{
-    margin-left: 60px;
+    margin-left: 35px;
 
 }
 ul#img{
@@ -136,9 +139,9 @@ ul#img{
     background: orange;
 }
 img{
-    width: 22px;
-    margin-left: 428px;
-    margin-top: -24px;
+ width: 17px;
+    margin-left: 3px;
+    margin-top: -16px;
     display: flex;
 
 }
@@ -158,11 +161,62 @@ img{
   }
 
   button.edit-button{
-    width: 34px;
-    height: 24px;
-    font-size: 15px;
-    border-radius: 21px;
-    margin-top: -4px;
+    width: 37px;
+    height: 21px;
+    font-size: 14px;
+    border-radius: 27px;
+    margin-top: -28px;
     display: flex;
+    text-align: center;
+    margin-left: 475px;
+    margin-top: -41px;
+
+  }
+list-item input[type="checkbox"] {
+    display: none; 
   }
   
+  .list-item input[type="checkbox"] + span {
+    position: relative;
+    padding-left: 30px; 
+    cursor: pointer;
+    user-select: none;
+    display: inline-block;
+    top: -11px;
+    
+  }
+  
+ /* .list-item input[type="checkbox"] + span:before {
+    content: '\2714'; 
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 20px; 
+    height: 20px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 20px;
+  }*/
+  
+  .list-item input[type="checkbox"]:checked + span:before {
+    background-color: #4CAF50;
+    color: #fff;
+    border-color: #4CAF50;
+    top: 13px;
+    font-size: 14px;}
+
+
+   .list-item input[type="checkbox"]{
+    color: red;
+    width: 20px;
+    
+    margin-top: 27px;
+   }
+   hr.line{
+    top: 10px;
+
+   }
+   
